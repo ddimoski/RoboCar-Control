@@ -109,4 +109,22 @@ In the main function we initialize a variable `keyboard_publisher` which is an i
       def publish_keypress(self, key_press):
         self.keyboard_publisher.publish(key_press)
 
+### 1.3.4. Keyboard Subscriber
 
+The subscriber is located in the Arduino code. We create a node handler which we initialize in the Arduino set up function. We also create a Subscriber to which the note handler subscribes to in the set up function.
+
+Every time data is sent to the `/keypress` topic the function `callback_message` is called. In that function, first we cast the data to `String`, then we check whether the key that has been pressed is up, down, left or right and accordingly we call the appropriate function depending on the data.
+
+     void callback_message(const std_msgs::String& pressed_key){
+       nh.loginfo(pressed_key.data);
+       String message = String(pressed_key.data);
+
+       if(message.equals("Key.up")) 
+         move_forward();
+       if(message.equals("Key.down"))
+         move_backward();
+       if(message.equals("Key.left")) 
+         move_left();
+       if(message.equals("Key.right")) 
+         move_right();
+    }
