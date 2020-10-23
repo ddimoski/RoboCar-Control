@@ -128,3 +128,19 @@ Every time data is sent to the `/keypress` topic the function `callback_message`
        if(message.equals("Key.right")) 
          move_right();
     }
+    
+    
+
+## 1.4. Starting the application
+
+In order to start the application, the local machine needs to have ROS installed and started with the command:
+
+     roscore
+     
+The publisher can be started with the code:
+
+     rosrun robocar KeyboardPublisher.py
+     
+The subscriber can be started with the code:
+
+     rosrun rosserial python serial_node.py /dev/tty[name of USB device connected to the hardware]
