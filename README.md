@@ -1,4 +1,5 @@
 # RoboCar Control with ROS and Arduino UNO
+_project by Davor Dimoski_
 
 ## 1.1. Idea
 
